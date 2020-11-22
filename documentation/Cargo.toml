@@ -1,0 +1,11 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "doc"
+version = "0.2.0"
+authors = ["Georg Lauterbach <uncore@uncore.com>"]
+edition = "2018"
+
+[dependencies]
+rocket = "0.4.5"
+rocket_contrib = "0.4.5"

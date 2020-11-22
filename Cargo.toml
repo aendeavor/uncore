@@ -1,0 +1,67 @@
+[package]
+edition = "2018"
+name = "uncore"
+version = "0.1.0"
+
+authors = [
+  "Georg Lauterbach <uncore@uncore.com>",
+]
+
+description = "An Operating System written in Rust - A Bare Metal Binary"
+documentation = "https://docs.rs/uncore/0.1.0/uncore/"
+
+readme = "./README.md"
+
+homepage = "https://uncore.io"
+repository = "https://github.com/aendeavor/uncore"
+
+license = "GPL-3.0"
+
+keywords = [
+  "operating-system",
+  "os",
+  "kernel",
+  "micro-kernel",
+  "no-std",
+]
+
+categories = [
+  "no-std",
+  "config"
+]
+
+# build
+# links
+
+publish = true
+
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
+
+# [[bin]]
+# name = "librarycore"
+# path = "src/lib/mod.rs"
+
+[dependencies]
+bootloader = "0.9.11"
+volatile = "0.2.6"
+lazy_static = { version = "1.0.0", features = [ "spin_no_std" ] }
+spin = "0.5.2"
+x86_64 = "0.12.1"
+uart_16550 = "0.2.0"
+
+[package.metadata.bootimage]
+test-args = [
+  "-device",
+  "isa-debug-exit,iobase=0xf4,iosize=0x04",
+
+  "-serial",
+  "stdio",
+
+  "-display",
+  "none"
+]
+test-success-exit-code = 33 # (0x10 << 1) | 1
+test-timeout = 100          # (in seconds)
