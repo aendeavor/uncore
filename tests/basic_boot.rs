@@ -1,8 +1,8 @@
 #![no_std]
 #![no_main]
 #![feature(custom_test_frameworks)]
-#![test_runner(uncore::core_lib::testing::test_runner)]
-#![reexport_test_harness_main = "_start_for_tests"]
+#![test_runner(uncore::core_lib::tests::testing::test_runner)]
+#![reexport_test_harness_main = "__start_tests"]
 
 /// # Imports
 ///
@@ -25,14 +25,14 @@ use uncore::println;
 #[no_mangle]
 pub extern "C" fn _start() -> !
 {
-	_start_for_tests();
-	core_lib::helper::__never_return()
+	__start_tests();
+	core_lib::misc::helper::__never_return()
 }
 
 #[panic_handler]
 fn panic(info: &core::panic::PanicInfo) -> !
 {
-	core_lib::panic::test_panic_handler(info)
+	core_lib::misc::panic::test_panic_handler(info)
 }
 
 #[test_case]

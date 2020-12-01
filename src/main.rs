@@ -4,8 +4,8 @@
 #![deny(clippy::nursery)]
 #![deny(clippy::pedantic)]
 #![feature(custom_test_frameworks)]
-#![test_runner(uncore::core_lib::testing::test_runner)]
-#![reexport_test_harness_main = "_start_for_tests"]
+#![test_runner(uncore::core_lib::tests::testing::test_runner)]
+#![reexport_test_harness_main = "__start_tests"]
 
 /// # Important Information
 ///
@@ -42,14 +42,14 @@
 /// ## Custom Tests
 ///
 /// As we cannot use the standard-library, we will
-/// need to use our own test framework.
+/// need to use our own tests framework.
 ///
 /// Therefore,
 ///
 /// ``` RUST
 /// #![feature(custom_test_frameworks)]
 /// #![test_runner(uncore::core_lib::tests::test_runner)]
-/// #![reexport_test_harness_main = "_start_for_tests"]
+/// #![reexport_test_harness_main = "__start_tests"]
 /// ```
 ///
 /// are used.
@@ -69,6 +69,10 @@
 /// `uncore::core_lib` is already used in `lib.rs`, we do not
 /// want to re-import it here and possibly confuse cargo.
 ///
+/// The only exceptions so far is the `init()` function called
+/// at the beginning of `_start`. It is called vi a`uncore::init()`
+/// which is perfectly fine.
+///
 /// ## Macros
 ///
 /// We will need to re-import all needed macros, as per definition
@@ -87,18 +91,21 @@ use uncore::core_lib;
 #[no_mangle]
 pub extern "C" fn _start() -> !
 {
-	core_lib::write::print_init();
+	uncore::init();
 
 	#[cfg(test)]
-	_start_for_tests();
+	__start_tests();
 
-	core_lib::helper::__never_return()
+	core_lib::misc::helper::__never_return()
 }
 
 /// # Panic Handler
 ///
 /// This function uses a conditionally compiled function
-/// depending on whether running the kernel or the test
+/// depending on whether running the kernel or the tests
 /// suite.
 #[panic_handler]
-fn panic(info: &core::panic::PanicInfo) -> ! { core_lib::panic::panic(info) }
+fn panic(info: &core::panic::PanicInfo) -> !
+{
+	core_lib::misc::panic::panic(info)
+}

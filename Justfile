@@ -1,6 +1,7 @@
 set shell := [ "bash", "-eu", "-o", "pipefail", "-c" ]
 
 export CDIR    := `realpath -e -L .`
+CC             := "cargo"
 VERSION        := "${VERSION}"
 
 # -->                   -->                   --> DEFAULT
@@ -14,43 +15,49 @@ DEFAULT: help
 # -->                   -->                   --> CODE
 
 build release='': _require_realpath
-  cargo build {{release}}
+  {{CC}} build {{release}}
 
 run:
-  @ cargo run
+  @ {{CC}} run
 
 bootimage:
-  cargo bootimage
+  {{CC}} bootimage
 
 # -->                   -->                   --> FORMATTING
 
 fmt: _require_realpath
-  @ cargo fmt --manifest-path ./Cargo.toml --message-format human
+  @ {{CC}} fmt --manifest-path ./Cargo.toml --message-format human
 
 # -->                   -->                   --> TESTS
 
 full_test: lint code_test
 
-code_test: fmt_test clippy_test cargo_test
+code_test: fmt_test clippy_test test
 
-test: cargo_test
+test: test_bin test_lib test_integration_tests
 
 @fmt_test:
-  make fmt_test
+  {{CC}} fmt --manifest-path ./Cargo.toml --message-format human -- --check
 
 @clippy_test:
-  make clippy_test
+  {{CC}} clippy --all-targets --all-features -- -D warnings
 
-@cargo_test:
-  cargo test
+test_bin:
+  @ {{CC}} test --bin uncore
 
-lint: eclint shellcheck
+test_lib:
+  @ {{CC}} test --lib
+
+test_integration_tests:
+  @ {{CC}} test --test '*'
+
+lint: eclint shellcheck fmt_test clippy_test
 
 @eclint:
-  make eclint
+  ./lints/eclint.sh
 
 @shellcheck:
-  make shellcheck
+  ./lints/shellcheck.sh
 
 # -->                   -->                   --> DOCUMENTATION
 
@@ -83,4 +90,4 @@ _require_realpath:
   @ cd {{CDIR}}
 
 _require_nightly:
-  @ rustup override set nightly
+  @ rustup override set nightly >/dev/null

@@ -8,21 +8,17 @@ MAKEFLAGS += --no-builtin-rules
 
 .PHONY: run_always set_nightly
 
-all: run_always build
+all: run_always serve
 
 set_nightly:
 	@ rustup override set nightly
 
-build: run_always
+build: run_always set_nightly
 	@ mkdocs build
-	@ ./build.sh build
-
-publish:
-	@ ./build.sh publish
 
 serve: run_always
 	@ mkdocs serve -a 127.0.0.1:8080
 
-installdeps:
+dependencies:
 	@ sudo apt-get install python3 python3-pip
 	@ pip3 install mkdocs mkdocs-material

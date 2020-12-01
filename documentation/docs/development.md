@@ -79,7 +79,7 @@ Furthermore, issue and merge request templates are located under `#!bash ${REPOS
 
 ## IDEs
 
-The main IDE used for development is [_Visual Studio Code_][visual_studio_code]. For some tasks, [_NeoVim_][neovim] is used too.
+The main IDE used for development is [_Visual Studio Code_][visual_studio_code::main] for light tasks as well as working on the documentation and [CLion][clion::main] for code-intensive tasks. For some tasks, [_NeoVim_][neovim::main] is used too.
 
 ### Extensions
 
@@ -92,29 +92,27 @@ EXTENSIONS=(
   "2gua.rainbow-brackets"
   "aaron-bond.better-comments"
   "azemoh.one-monokai"
+  "be5invis.toml"
   "bierner.markdown-preview-github-styles"
   "DavidAnson.vscode-markdownlint"
-  "dustypomerleau.rust-syntax"
   "editorconfig.editorconfig"
   "esbenp.prettier-vscode"
   "mads-hartmann.bash-ide-vscode"
-  "matklad.rust-analyzer"
-  "ms-kubernetes-tools.vscode-kubernetes-tools"
-  "ms-python.python"
-  "ms-vscode-remote.remote-ssh"
-  "ms-vscode-remote.remote-ssh-edit"
   "ms-vscode.cpptools"
-  "PKief.material-icon-theme"
-  "redhat.vscode-xml"
+  "pkief.material-icon-theme"
   "redhat.vscode-yaml"
+  "rust-lang.rust"
+  "serayuzgur.crates"
   "shd101wyy.markdown-preview-enhanced"
   "streetsidesoftware.code-spell-checker"
   "streetsidesoftware.code-spell-checker-german"
   "timonwong.shellcheck"
+  "vadimcn.vscode-lldb"
   "VisualStudioExptTeam.vscodeintellicode"
+  "xshrim.txt-syntax"
   "yzhang.markdown-all-in-one"
-  "zhuangtongfa.Material-theme"
 )
+
 
 for EXTENSION in ${EXTENSIONS[@]}
 do
@@ -128,20 +126,27 @@ done
 VimPlug should be enabled and contain the following plugins:
 
 ``` VIM
-Plug 'scrooloose/nerdtree'     " File explorer
-Plug 'itchyny/lightline.vim'   " Status line
-Plug 'ctrlpvim/ctrlp.vim'      " Full path finder
-Plug 'Raimondi/delimitMate'    " Automatic closing of parenthesis
-Plug 'tpope/vim-markdown'      " Markdown language extension
-Plug 'vim-syntastic/syntastic' " Syntax check
-Plug 'luochen1990/rainbow'     " Rainbow brackets
-Plug 'Valloric/YouCompleteMe'  " Autocompletion
-Plug 'morhetz/gruvbox'         " Themes
-Plug 'ryanoasis/vim-devicons'  " Icon theme
+Plug 'scrooloose/nerdtree'      " File explorer
+Plug 'itchyny/lightline.vim'    " Status line
+Plug 'ctrlpvim/ctrlp.vim'       " Full path fuzzy file-, ... finder
+Plug 'Raimondi/delimitMate'     " Automatic closing of parenthesis, etc.
+Plug 'mhinz/vim-startify'       " Fancy start screen
+Plug 'tpope/vim-markdown'       " Markdown language extension
+Plug 'vim-syntastic/syntastic'  " Syntax check
+Plug 'rust-lang/rust.vim'       " Rust language support
+Plug 'majutsushi/tagbar'        " Tagbar creates an outline
+Plug 'luochen1990/rainbow'      " Rainbow brackets
+Plug 'Valloric/YouCompleteMe'   " Autocompletion
 ```
 
-[visual_studio_code]: https://code.visualstudio.com/
-[neovim]: https://neovim.io/
+[visual_studio_code::main]: https://code.visualstudio.com/
+[clion::main]: https://www.jetbrains.com/clion/
+[neovim::main]: https://neovim.io/
+
+## Code Documentation & Testing
+
+[//]: # (TODO)
+TBD.
 
 ## Coding Style
 

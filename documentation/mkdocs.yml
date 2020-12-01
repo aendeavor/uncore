@@ -1,6 +1,6 @@
-site_name: unCORE
-repo_name: unCORE
-repo_url: https://uncore.io
+site_name: unCore
+repo_name: uncore
+repo_url: https://github.com/aendeavor/uncore
 nav:
   - Welcome: index.md
   - Development: development.md

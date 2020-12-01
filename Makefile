@@ -9,28 +9,12 @@ MAKEFLAGS += --no-builtin-rules
 CC = cargo
 
 .PHONY: run_always
+run_always:
 
-all: help
-help: run_always
-	@ just help
+all: build run_always
 
-lint: eclint shellcheck
-
-eclint:
-	./lints/eclint.sh
-
-shellcheck:
-	./lints/shellcheck.sh
-
-code_test: fmt_test clippy_test
-
-fmt_test:
-	$(CC) fmt --manifest-path ./Cargo.toml --message-format human -- --check
-
-clippy_test:
-	$(CC) clippy --all-targets --all-features -- -D warnings
+build: run_always
+	@ $(CC) build
 
 clean:
 	$(CC) clean
-
-run_always:

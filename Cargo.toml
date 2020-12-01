@@ -7,7 +7,7 @@ authors = [
   "Georg Lauterbach <uncore@uncore.com>",
 ]
 
-description = "An Operating System written in Rust - A Bare Metal Binary"
+description = "An Operating System Kernel written in Rust"
 documentation = "https://docs.rs/uncore/0.1.0/uncore/"
 
 readme = "./README.md"
@@ -30,9 +30,6 @@ categories = [
   "config"
 ]
 
-# build
-# links
-
 publish = true
 
 autobins = true
@@ -40,17 +37,15 @@ autoexamples = true
 autotests = true
 autobenches = true
 
-# [[bin]]
-# name = "librarycore"
-# path = "src/lib/mod.rs"
-
 [dependencies]
 bootloader = "0.9.11"
+lazy_static = { version = "1.4.0", features = [ "spin_no_std" ] }
+pc-keyboard = "0.5.1"
+pic8259_simple = "0.2.0"
+spin = "0.7.0"
+uart_16550 = "0.2.10"
 volatile = "0.2.6"
-lazy_static = { version = "1.0.0", features = [ "spin_no_std" ] }
-spin = "0.5.2"
-x86_64 = "0.12.1"
-uart_16550 = "0.2.0"
+x86_64 = "0.12.3"
 
 [package.metadata.bootimage]
 test-args = [
@@ -64,4 +59,8 @@ test-args = [
   "none"
 ]
 test-success-exit-code = 33 # (0x10 << 1) | 1
-test-timeout = 100          # (in seconds)
+test-timeout = 100          # in seconds
+
+[[test]]
+name = "stack_overflow"
+harness = false
