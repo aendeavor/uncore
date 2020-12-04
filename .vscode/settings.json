@@ -44,6 +44,7 @@
     "tlsv",
     "toolchain",
     "uncore",
-    "vendored"
+    "vendored",
+    "xbuild"
   ]
 }
