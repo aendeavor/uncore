@@ -6,9 +6,9 @@
 # ? task          checks scripts against an editorconfig linter
 '
 
-# shellcheck source=../scripts/lib/errors.sh
+# shellcheck source=../lib/errors.sh
 . scripts/lib/errors.sh
-# shellcheck source=../scripts/lib/logs.sh
+# shellcheck source=../lib/logs.sh
 . scripts/lib/logs.sh
 
 export SCRIPT='EDITORCONFIG LINTER'

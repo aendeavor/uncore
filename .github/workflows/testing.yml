@@ -1,0 +1,36 @@
+name: Rust Code Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+env:
+  TOOLCHAIN: nightly-2020-11-09
+
+jobs:
+  test_rust_code:
+    name: Test the code
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install rustup
+        run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Install nightly Rust toolchain
+        run: rustup toolchain install ${{ env.TOOLCHAIN }}
+      - name: Set default Rust toolchain
+        run: rustup override set ${{ env.TOOLCHAIN }}
+      - name: Install needed components
+        run: rustup component add clippy rls rustfmt llvm-tools-preview
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+        with:
+          image: tonistiigi/binfmt:latest
+          platforms: amd64
+      - uses: actions/checkout@v2
+      - name: Run formatting check
+        run: cargo fmt -- --check
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Run all tests
+        run: cargo test

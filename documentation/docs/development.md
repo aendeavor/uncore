@@ -44,21 +44,21 @@ Make sure to adhere to the [GitFlow Workflow][gitflow_worklow]. We use [Semantic
 
 The following labels must exists to tag issues and merge requests
 
-| Label             | Description                            | Look                                | Color   |
-| :---:             | :---------:                            | :--:                                | :---:   |
-| `core`            | concerning core components             | ![core][core]                       | #101010 |
-| `uncore`          | concerning components outside the core | ![uncore][uncore]                   | #DDDDDD |
-| `bug`             | related to a bug                       | ![bug][bug]                         | #FBB444 |
-| `roadmap`         | outlines future plans                  | ![roadmap][roadmap]                 | #F28F3B |
-| `conflict`        | related to a conflict of any nature    | ![conflict][conflict]               | #EE2E31 |
-| `feature request` | introduces a new feature               | ![feature request][feature request] | #A30B37 |
-| `wip`             | work in progress                       | ![wip][wip]                         | #2E2947 |
-| `documentation`   | concerning the documentation           | ![documentation][documentation]     | #3C91E6 |
-| `enhancement`     | enhances existing features             | ![enhancement][enhancement]         | #99C24D |
-| `update`          | updates an existing feature            | ![update][update]                   | #297045 |
-| `high priority`   | issue / merge of high priority         | ![priority1][high priority]         | #FF0000 |
-| `medium priority` | issue / merge of medium priority       | ![priority2][medium priority]       | #FFFF00 |
-| `low priority`    | issue / merge of low priority          | ![priority3][low priority]          | #81F445 |
+| Label             | Description                               | Look                                | Color   |
+| :---:             | :---------:                               | :--:                                | :---:   |
+| `core`            | concerning core components                | ![core][core]                       | #101010 |
+| `uncore`          | concerning components outside the core    | ![uncore][uncore]                   | #DDDDDD |
+| `bug`             | related to a bug                          | ![bug][bug]                         | #FBB444 |
+| `roadmap`         | outlines future plans                     | ![roadmap][roadmap]                 | #F28F3B |
+| `conflict`        | related to a conflict of any nature       | ![conflict][conflict]               | #EE2E31 |
+| `feature request` | introduces a new feature                  | ![feature request][feature request] | #A30B37 |
+| `wip`             | work in progress                          | ![wip][wip]                         | #2E2947 |
+| `documentation`   | concerning the documentation              | ![documentation][documentation]     | #3C91E6 |
+| `enhancement`     | enhances existing features                | ![enhancement][enhancement]         | #99C24D |
+| `update`          | updates an existing feature               | ![update][update]                   | #297045 |
+| `priority/high`   | issue / merge requests of high priority   | ![priority1][high priority]         | #FF0000 |
+| `priority/medium` | issue / merge requests of medium priority | ![priority2][medium priority]       | #fbca04 |
+| `priority/low`    | issue / merge requests of low priority    | ![priority3][low priority]          | #81F445 |
 
 [core]: https://img.shields.io/badge/core-101010
 [uncore]: https://img.shields.io/badge/uncore-DDDDDD

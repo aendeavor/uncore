@@ -1,8 +1,9 @@
 set shell := [ "bash", "-eu", "-o", "pipefail", "-c" ]
 
-export CDIR    := `realpath -e -L .`
-CC             := "cargo"
-VERSION        := "${VERSION}"
+export CDIR  := `realpath -e -L .`
+CC           := "cargo"
+VERSION      := "${VERSION}"
+TOOLCHAIN    := "nightly-2020-11-09"
 
 # -->                   -->                   --> DEFAULT
 
@@ -12,7 +13,7 @@ DEFAULT: help
   just --version ; echo
   just --list ; echo
 
-# -->                   -->                   --> CODE
+# -->                   -->                   --> BUILDING & RUNNING
 
 build release='': _require_realpath
   {{CC}} build {{release}}
@@ -23,24 +24,32 @@ run:
 bootimage:
   {{CC}} bootimage
 
-# -->                   -->                   --> FORMATTING
+# -->                   -->                   --> CODE ADJUSTMENTS
 
 fmt: _require_realpath
   @ {{CC}} fmt --manifest-path ./Cargo.toml --message-format human
 
-# -->                   -->                   --> TESTS
+# -->                   -->                   --> LINTING TESTS
 
-full_test: lint code_test
+lint: eclint shellcheck fmt_check
 
-code_test: fmt_test clippy_test test
+eclint:
+  @ ./scripts/lints/eclint.sh
 
-test: test_bin test_lib test_integration_tests
+shellcheck:
+  @ ./scripts/lints/shellcheck.sh
 
-@fmt_test:
-  {{CC}} fmt --manifest-path ./Cargo.toml --message-format human -- --check
+fmt_check:
+  @ {{CC}} fmt -- --check
 
-@clippy_test:
-  {{CC}} clippy --all-targets --all-features -- -D warnings
+# -->                   -->                   --> CODE TESTS
+
+full_test: lint test
+
+test: clippy test_bin test_lib test_integration_tests
+
+clippy:
+  @ {{CC}} clippy --all-targets --all-features -- -D warnings
 
 test_bin:
   @ {{CC}} test --bin uncore
@@ -50,14 +59,6 @@ test_lib:
 
 test_integration_tests:
   @ {{CC}} test --test '*'
-
-lint: eclint shellcheck fmt_test clippy_test
-
-@eclint:
-  ./lints/eclint.sh
-
-@shellcheck:
-  ./lints/shellcheck.sh
 
 # -->                   -->                   --> DOCUMENTATION
 
@@ -89,5 +90,5 @@ install package *manager:
 _require_realpath:
   @ cd {{CDIR}}
 
-_require_nightly:
-  @ rustup override set nightly >/dev/null
+_nightly:
+  @ rustup override set {{TOOLCHAIN}} 2>&1 | grep -v -E 'info|nightly'
