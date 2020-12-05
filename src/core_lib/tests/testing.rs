@@ -7,7 +7,7 @@ use crate::core_lib::misc::helper::qemu;
 /// # A Simple Test Runner Implementation
 ///
 /// This function is registered as the tests
-/// runner when executing cargo tests's unit tests.
+/// runner when executing Cargo test's unit tests.
 ///
 /// It will just execute all functions marked with `#[test_case]`
 /// one by one.

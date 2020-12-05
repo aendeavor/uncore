@@ -45,6 +45,6 @@ if [[ ${ERR} -eq 0 ]]
 then
   __log_success 'no errors detected'
 else
-  __log_abort 'errors encountered'
+  __log_failure 'errors encountered'
   exit 1
 fi

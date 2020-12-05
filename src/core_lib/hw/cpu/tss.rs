@@ -12,7 +12,7 @@ lazy_static! {
 
 		// we now define the kernel stack to use when a double
 		// fault exception occurs to prevent fatal triple fault
-		// exeptions (e.g. due to hitting the guard page)
+		// exceptions (e.g. due to hitting the guard page)
 		tss.interrupt_stack_table[gdt::DOUBLE_FAULT_IST_INDEX as usize] = {
 			const STACK_SIZE: usize = 4096 * 5;
 			// the mut is important, as the bootloader would otherwise

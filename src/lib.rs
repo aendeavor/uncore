@@ -63,8 +63,7 @@
 ///
 /// Cargo's auto-detection of library files is turned on.
 ///
-///
-/// Therefore, `src/lib.rs` is automatically detected by `cargo`
+/// Therefore, `src/lib.rs` is automatically detected by Cargo
 /// as a (freestanding) library. We need to define some
 /// code segments twice, here as well as an in `src/main.rs` as this file is
 /// tested by Cargo separately.
@@ -118,13 +117,8 @@ fn panic(info: &core::panic::PanicInfo) -> !
 
 /// # Global Initialization
 ///
-/// This function takes care of initialization of global
-/// values, registers and global state.
-///
-/// ## Examples
-///
-/// - The Global Descriptor Table (GDT) is initialized here.
-/// - The Interrupt Descriptor Table (IDT) is initialized here.
+/// This function takes care of initialization of registers,
+/// global state and values.
 pub fn init()
 {
 	core_lib::hw::io::write::print_init();

@@ -1,6 +1,6 @@
 /// # CPU Exceptions & Interrupt Handlers
 ///
-/// This module contains all CPU exception handlers which can be registed in
+/// This module contains all CPU exception handlers which can be registered in
 /// the IDT.
 mod exceptions_handlers;
 

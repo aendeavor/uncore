@@ -67,7 +67,7 @@
 /// The `uncore::core_lib` is used here explicitly with the
 /// `use` statement, and not with the `mod` statement. As
 /// `uncore::core_lib` is already used in `lib.rs`, we do not
-/// want to re-import it here and possibly confuse cargo.
+/// want to re-import it here and possibly confuse Cargo.
 ///
 /// The only exceptions so far is the `init()` function called
 /// at the beginning of `_start`. It is called vi a`uncore::init()`

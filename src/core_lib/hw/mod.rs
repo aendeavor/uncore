@@ -6,7 +6,7 @@ pub mod cpu;
 
 /// # Hardware Initialization
 ///
-/// This module's sole prupose is to provide the `run()` function
+/// This module's sole propose is to provide the `run()` function
 /// as the main initialization wrapper for all hardware components.
 pub mod init;
 

@@ -9,12 +9,15 @@ use super::{
 ///
 /// ## Caller
 ///
-/// It is called in the main `init()` function found in `crate::lib.rs`.
+/// It is called in the global `init()` function found in `crate::lib.rs`.
 ///
 /// ## Callees
 ///
-/// 1. The Global Descriptor Table (GDT) is initialized here.
-/// 2. The Interrupt Descriptor Table (IDT) is initialized here.
+/// The following structures are initialized
+/// 
+/// 1. Global Descriptor Table (GDT)
+/// 2. Interrupt Descriptor Table (IDT)
+/// 3. Process Interrupt Controllers (PIC)
 pub fn run()
 {
 	cpu::gdt::init();

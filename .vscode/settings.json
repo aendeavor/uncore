@@ -1,12 +1,15 @@
 {
   "cSpell.words": [
     "Affero",
+    "Callees",
     "Edsger",
     "Fira",
     "Git's",
     "Oppermann",
     "RUSTC",
+    "Scancode",
     "Sublicensing",
+    "Virt",
     "WIPO",
     "autohide",
     "bootloader",
@@ -24,6 +27,7 @@
     "fontawesome",
     "gitlab",
     "inlinehilite",
+    "keyevent",
     "linenums",
     "llvm",
     "macos",
