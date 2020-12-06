@@ -31,8 +31,7 @@ The following diagram will provide you with an overview of and information about
 ├── .github/             # GitHub's issue and pull request templates
 ├── .gitlab/             # GitLab's issue and merge request templates
 ├── documentation/       # this documentation resides here
-├── lints/               # holds all scripts for linting the code
-├── scripts/             # holds all generic shell / Bash scripts
+├── scripts/             # holds all shell / Bash scripts
 ├── src/                 # the source code is located here
 │   ├── core_lib/        # the module holding all major modules
 │   │   ├── hw           # the major module for hardware

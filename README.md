@@ -19,7 +19,7 @@
 
 ## Introduction
 
-**_unCore_** is an [operating system kernel][kernel::wikipedia] completely written is [Rust][rust-lang::main].  This work was and is heavily inspired by [_Phillip Oppermann_'s _BlogOS_][blog-os::github] project. The purpose of **_unCore_** is to explore [Rust][rust-lang::main]'s capabilities, get a better understanding of how [Rust][rust-lang::main] and [kernels][kernel::wikipedia] work, and to provide an educational kernel implementation.
+**_unCore_** is an [operating system kernel][kernel::wikipedia] completely written is [Rust][rust-lang::main].  This work was and is heavily inspired by [_Phillip Oppermann_'s _BlogOS_][blog-os::github] project. The purpose of **_unCore_** is to explore Rust's capabilities, get a better understanding of how Rust and [kernels][kernel::wikipedia] work, and to provide a kernel implementation.
 
 ## Goals
 
@@ -27,11 +27,23 @@ This project does not explain the process of building and designing a kernel lik
 
 The goals of this project are
 
-1. **Robustness** –– [Rust][rust-lang::main] is known for its safety and compile time guarantees. This shall be used to provide an inherently (memory) safe implementation of a [kernel][kernel::wikipedia].
-2. **Correctness** –– This [kernel][kernel::wikipedia] implementation provides exhaustive unit and integration testing to ensure [a high degree](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD03xx/EWD303.html) of correctness.
-3. **Abstraction** –– [Rust][rust-lang::main] provides a more abstract style of writing code than for example [C][c::wikipedia]. This can lead to more beautiful solutions to certain problems.
-4. **Education** –– Anyone who is interested in the codebase will find extensive documentation. This serves the goal of providing everyone with an understanding of what the code does, why it's designed this way and how it works.
-5. **Speed** –– It's obvious that [kernels][kernel::wikipedia] are to be written in well-performing languages that satisfy [certain requirements](https://youtu.be/RyY01fRyGhM?t=385).
+1. **Robustness** –– Rust is known for its safety and compile time guarantees. This shall be used to provide an inherently (memory) safe implementation of a kernel.
+2. **Correctness** –– This kernel implementation provides exhaustive unit and integration testing to ensure [a high degree](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD03xx/EWD303.html) of correctness.
+3. **Abstraction** –– Rust provides a more abstract style of writing code than for example [C][c::wikipedia]. This can lead to more beautiful solutions to certain problems.
+4. **Speed** –– It's obvious that kernels are to be written in well-performing languages that satisfy [certain requirements](https://youtu.be/RyY01fRyGhM?t=385).
+5. **Education** –– Anyone who is interested in the codebase will find extensive documentation. This serves the goal of providing everyone with an understanding of what the code does, why it's designed this way and how it works.
+
+## Dependencies
+
+We require Rust via `rustup`. All other dependencies are installed by a provided script. Take the following steps:
+
+``` BASH
+# install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# install all other dependencies
+./scripts/init.sh install deps
+```
 
 ## Documentation
 

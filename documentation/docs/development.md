@@ -5,31 +5,6 @@
 
     – **Edsger W. Dijkstra**
 
-## General
-
-This document provides the guide on how to develop in this repository. There are tools required for proper development. These include
-
-- [`make`][make::wikipedia] via `sudo apt-get -y install make`
-- [`python3`][python3::wikipedia] and `pip` via `sudo apt-get -y install python3 python3-pip`
-- [`mkdocs`][mkdocs::main] and [`mkdocs-material`][mkdocs_material::main] via `pip3 install mkdocs mkdocs-material`
-- [`cargo`][cargo::github] and [`rustup`][rustup::github] via [curl][rustup::installation]
-- [`just`][just::github] via `cargo install just`
-
-If you like, you can optionally include the following tools into your workflow:
-
-- [`delta`][delta::github] via `cargo install delta`
-
-[make::wikipedia]: https://en.wikipedia.org/wiki/Make_(software)
-[python3::wikipedia]: https://en.wikipedia.org/wiki/Python_(programming_language)
-[mkdocs::main]: https://www.mkdocs.org/
-[mkdocs_material::main]: https://squidfunk.github.io/mkdocs-material/
-[cargo::github]: https://github.com/rust-lang/cargo
-[rustup::github]: https://github.com/rust-lang/rustup
-[rustup::installation]: https://rustup.rs/
-[just::github]: https://github.com/casey/just
-
-[delta::github]: https://github.com/dandavison/delta
-
 !!! important "Working with this Documentation"
     If you'd like to alter this documentation, edit the Markdown files located under `documentation/docs/`. The current state is served on <http://127.0.0.1:8080> with `just docs`. This documentation is packed in a _Docker_ container.
 

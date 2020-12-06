@@ -18,3 +18,6 @@ build: run_always
 
 clean:
 	$(CC) clean
+
+dependencies:
+	@ ./scripts/init.sh install deps

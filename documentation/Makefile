@@ -10,9 +10,6 @@ MAKEFLAGS += --no-builtin-rules
 
 all: run_always serve
 
-set_nightly:
-	@ rustup override set nightly
-
 build: run_always set_nightly
 	@ mkdocs build
 
